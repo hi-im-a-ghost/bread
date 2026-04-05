@@ -3,20 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Pan</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
-
+  @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap");
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     background: #fff;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    font-family: 'Nunito', sans-serif;
+    font-family: "Nunito", sans-serif;
     cursor: none;
   }
-
   .pan {
     position: absolute;
     font-size: 42px;
@@ -30,24 +28,24 @@
 <div class="pan" id="cursor">🍞</div>
 
 <script>
-  const cursor = document.getElementById('cursor');
+  const cursor = document.getElementById("cursor");
   let mx = 0, my = 0;
 
-  document.addEventListener('mousemove', e => {
+  document.addEventListener("mousemove", e => {
     mx = e.clientX;
     my = e.clientY;
-    cursor.style.left = mx + 'px';
-    cursor.style.top = my + 'px';
+    cursor.style.left = mx + "px";
+    cursor.style.top = my + "px";
   });
 
-  document.addEventListener('click', () => lanzar(mx, my));
+  document.addEventListener("click", () => lanzar(mx, my));
 
   function lanzar(ox, oy) {
-    const pan = document.createElement('div');
-    pan.classList.add('pan');
-    pan.textContent = '🍞';
-    pan.style.left = ox + 'px';
-    pan.style.top = oy + 'px';
+    const pan = document.createElement("div");
+    pan.classList.add("pan");
+    pan.textContent = "🍞";
+    pan.style.left = ox + "px";
+    pan.style.top = oy + "px";
     document.body.appendChild(pan);
 
     const ang = Math.random() * Math.PI * 2;
@@ -68,9 +66,9 @@
       if (px > innerWidth)  { px = innerWidth;   vx *= -0.6; }
       if (py > innerHeight) { py = innerHeight;  vy *= -0.6; vx *= 0.85; }
 
-      pan.style.left = px + 'px';
-      pan.style.top  = py + 'px';
-      pan.style.transform = `translate(-50%,-50%) rotate(${rot}deg)`;
+      pan.style.left = px + "px";
+      pan.style.top  = py + "px";
+      pan.style.transform = "translate(-50%,-50%) rotate(" + rot + "deg)";
       pan.style.opacity = Math.max(0, 1 - vida / 180);
 
       if (vida < 180) requestAnimationFrame(tick);
